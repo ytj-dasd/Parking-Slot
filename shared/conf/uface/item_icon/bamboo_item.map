@@ -1,0 +1,50 @@
+## ITEM_BAMBOO_PROJECT = 2521
+2521: item_icon/project.png
+## ITEM_RAW_DATA_FOLDER = 2550
+2550: item_icon/raw_data.png
+## ITEM_RAW_DATA_CLOUD_FOLDER = 2551
+2551: item_icon/scan.png
+## ITEM_RAW_DATA_CLOUD_LIST_FOLDER = 2552
+2552: item_icon/scans.png
+## ITEM_ORIGIN_DATA_FOLDER = 2560
+2560: item_icon/origin_data.png
+## ITEM_ORIGIN_DATA_LOCAL_POSE_FILER = 2561
+2561: item_icon/pose3d.png
+## ITEM_ORIGIN_DATA_GLOBAL_POSE_FILER = 2562
+2562: item_icon/pose3d.png
+## ITEM_ORIGIN_DATA_FRONT_VIEW_FOLDER = 2564
+2564: item_icon/image.png
+## ITEM_ORIGIN_DATA_BIRD_VIEW_FOLDER = 2563
+2563: item_icon/image.png
+## ITEM_ORIGIN_DATA_FULL_CLOUD_FOLDER = 2565
+2565: item_icon/point_cloud.png
+## ITEM_ORIGIN_DATA_CLOUD_FOLDER = 2566
+2566: item_icon/point_cloud.png
+## ITEM_ORIGIN_DATA_CLOUD_LIST_FOLDER = 2567
+2567: item_icon/origin_cloud_list.png
+## ITEM_ORIGIN_DATA_MODEL_FOLDER = 2569
+2569: item_icon/osg_model.png
+## ITEM_ORIGIN_DATA_MODEL_LIST_FOLDER = 2570
+2570: item_icon/osg_models.png
+## ITEM_ORIGIN_DATA_DOM_FOLDER = 2571
+2571: item_icon/dom.png
+## ITEM_ORIGIN_DATA_DEM_FOLDER = 2572
+2572: item_icon/dem.png
+## ITEM_BUILDING_LIST_FOLDER = 2580
+2580: item_icon/buildings.png
+## ITEM_BUILDING_FOLDER = 2581
+2581: item_icon/building.png
+## ITEM_BUILDING_SECTION_HORIZONTAL_LIST_FOLDER = 2610
+2610: item_icon/horizontal_section.png
+## ITEM_BUILDING_SECTION_VERTICAL_LIST_FOLDER = 2620
+2620: item_icon/vertical_section.png
+## ITEM_TERRAIN_FEATURE_LIST_FOLDER = 2641
+2641: item_icon/featrue_layer.png
+## ITEM_TERRAIN_CONTROL_POINT_FOLDER = 2642
+2642: item_icon/feature_control_point.png
+## ITEM_TERRAIN_CONTROL_POINT_LIST_FOLDER = 2643
+2643: item_icon/feature_control_point_list.png
+## ITEM_TERRAIN_ROAD_EDGE_FILER = 2644
+2644: item_icon/feature_road_edge.png
+## ITEM_TERRAIN_ROAD_EDGE_LIST_FOLDER = 2645
+2645: item_icon/feature_road_edge_list.png

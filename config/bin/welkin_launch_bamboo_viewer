@@ -1,0 +1,5 @@
+#!/bin/bash
+set -ue
+CURRENT_PATH=$(cd `dirname $0`; pwd)
+
+${CURRENT_PATH}/../app/bamboo_viewer

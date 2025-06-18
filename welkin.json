@@ -1,0 +1,39 @@
+{
+    "name": "bamboo",
+    "version": "2.0.0",
+    "module_name": "bamboo",
+    "dependency": {},
+    "build_proto": {
+        "type": "cpp",
+        "proto": [
+
+        ]
+    },
+    "build": {
+        "clear": true,
+        "rebuild_proto": true
+    },
+    "install": {
+        "app": [
+            "apps/bamboo_preprocess/bamboo_preprocess",
+            "apps/bamboo_building/bamboo_building",
+            "apps/bamboo_terrain/bamboo_terrain",
+            "apps/bamboo_parklot/bamboo_parklot",
+            "apps/bamboo_viewer/bamboo_viewer",
+            "apps/bamboo_keymap_generator/bamboo_keymap_generator"
+        ],
+        "library": [
+            "libs/bamboo"
+        ],
+        "plugin": [
+            // "plugins/bamboo_data_import"
+        ],
+        "config": true,
+        "clear": true,
+        "remove_headers": true,
+        "copy_to_system": true
+    },
+    "publish": {
+        "as_latest": true
+    }
+}

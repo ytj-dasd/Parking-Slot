@@ -1,0 +1,37 @@
+<RCC>
+    <qresource prefix="/bamboo">
+        <file>images/interaction.png</file>
+        <file>images/zoom_in.png</file>
+        <file>images/zoom_out.png</file>
+        <file>images/import_las.png</file>
+        <file>images/import_e57.png</file>
+        <file>images/import_list.png</file>
+        <file>images/enable_interaction.png</file>
+        <file>images/enable_interaction.png</file>
+        <file>images/3d_view.png</file>
+        <file>images/front_view.png</file>
+        <file>images/top_view.png</file>
+        <file>images/clear.png</file>
+        <file>images/normal_x.png</file>
+        <file>images/normal_z.png</file>
+        <file>images/normal_xoy.png</file>
+        <file>images/normal_ground.png</file>
+        <file>images/export_las.png</file>
+        <file>images/export_handbook.png</file>
+        <file>images/save.png</file>
+        <file>images/curb.png</file>
+        <file>images/wall.png</file>
+        <file>images/pole.png</file>
+        <file>images/tree.png</file>
+        <file>images/crosswalk.png</file>
+        <file>images/manhole.png</file>
+        <file>images/roadarrow.png</file>
+        <file>images/parklot.png</file>
+        <file>images/lane.png</file>
+        <file>images/road_edge.png</file>
+        <file>images/layer.png</file>
+        <file>images/optimate.png</file>
+        <file>images/ebd_model.png</file>
+        <file>images/structure.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,5 @@
+include(glog.pri)
+include(protobuf.pri)
+include(eigen.pri)
+include(common.pri)
+include(uface.pri)
