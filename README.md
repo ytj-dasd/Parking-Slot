@@ -20,5 +20,4 @@
 
 ## TJ-PS Datasets && Corner Detection ONNX && OCR ONNX
 
-- link: https://pan.baidu.com/s/1ZbNAXT5YJ_CRDeP_xvUJ0w?pwd=ujfj 
-
+- link:链接: https://pan.baidu.com/s/1ZAsmR6Dw5xQ0XwP2qfbp-w?pwd=bs1e 
