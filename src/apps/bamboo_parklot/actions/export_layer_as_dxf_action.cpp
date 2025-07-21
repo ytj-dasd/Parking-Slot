@@ -5,7 +5,7 @@
 #include <common/base/dir.h>
 #include <common/geometry/polygon2.h>
 #include <common/geometry/polygon3.h>
-#include <uface/canvas2d/item.hpp>
+#include <ucanvas/item.hpp>
 #include "../main_viewer.h"
 
 namespace welkin::bamboo {
@@ -125,7 +125,7 @@ void ExportLayerAsDxfAction::process() {
         UError(tr("Cannot open dxf file: %1").arg(_save_path));
         return;
     }
-    dxf_file.writeLayerIds({"closed", "colored", "three_lines", "terrain", "text"}, 4);
+    dxf_file.writeLayerIds({"closed", "colored", "three_lines", "need_check","text", "terrain"}, 4);
     // 写出图层内容
     auto matrix_trans = _pose_trans.toMatrix();
     // 库位图层
@@ -134,7 +134,6 @@ void ExportLayerAsDxfAction::process() {
         // 无效的跳过
         if (!group.valid) {continue;}
         for (const auto& ps : group.parkspaces) {
-
             common::Polygon2d pg2d;
             pg2d.points = ps.points;
             common::Polygon3d pg3d;
@@ -172,7 +171,6 @@ void ExportLayerAsDxfAction::process() {
                 text_line.begin_point = common::Point2d(pl3d.points[0].x, pl3d.points[0].y);
                 text_line.end_point = common::Point2d(pl3d.points[1].x, pl3d.points[1].y);
                 text_line.begin_point = text_line.getCenter();
-//                double angle = text_line.getAngle() * 180.0 / M_PI;
                 double angle = 0;
                 dxf_file.writePolyline3(pl3d.points, false, color, "colored");
                 if (deltas[i] != 0) {
@@ -187,9 +185,7 @@ void ExportLayerAsDxfAction::process() {
 
     for (const auto& group : _main_viewer->getParkSpaceGroupVec()) {
         // 无效的跳过
-        if (!group.valid) {
-            continue;
-        }
+        if (!group.valid) {continue;}
         for (const auto& pl : group.parklines) {
             common::Polyline3d pl3d = convertLineToPolyline(pl.center_line);
             pl3d.transform(matrix_trans);
@@ -203,6 +199,34 @@ void ExportLayerAsDxfAction::process() {
         }
     }
     exportTerrainToDxf(dxf_file);
+
+    for (const auto& group : _main_viewer->getParkSpaceGroupVec()) {
+        // 无效的跳过
+        if (!group.valid) {continue;}
+        for (const auto& pl : group.parklines) {
+            int color_flag = 256;
+            if (pl.need_check) {
+                color_flag = 5;
+            } else {
+                color_flag = 3;
+            }
+            common::Polyline3d pl3d;
+            if (pl.type == ParkLine::TypeBorder) {
+                pl3d = convertLineToPolyline(pl.border_line);
+            } else {
+                pl3d = convertLineToPolyline(pl.center_line);
+            }
+            pl3d.transform(matrix_trans);
+            dxf_file.writePolyline3(pl3d.points, false, color_flag, "need_check");
+            common::Line2d text_line;
+            text_line.begin_point = common::Point2d(pl3d.points[0].x, pl3d.points[0].y);
+            text_line.end_point = common::Point2d(pl3d.points[1].x, pl3d.points[1].y);
+            text_line.begin_point = text_line.getCenter();
+            double angle = 0;
+            dxf_file.writeText(std::to_string(pl.test_index), text_line, angle, 0.5, color_flag, "need_check");
+        }
+    }
+
     dxf_file.close();
     UInfo("Export layer as dxf file successfully!");
     return;

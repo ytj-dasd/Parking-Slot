@@ -24,7 +24,7 @@ public:
     // 独立库位某条线索引数组
     std::vector<int> indexs;
 
-    double line_width = 0.18; // 线宽
+    double line_width = 0.15; // 线宽
     common::Line2d center_line; // 中心线
     int outer_border_signed = 1; // 外边界线符号（相对于中心线）
     common::Line2d border_line; // 边界线
@@ -33,6 +33,10 @@ public:
     bool fit_success = false;
     common::Line2d border_line1; // 边界线1
     common::Line2d border_line2; // 边界线2
+    
+    // 是否需要检核
+    bool need_check = false;
+    int test_index = -1;
     
     // 存在线索引
     bool hasIndex(int index) const;
@@ -46,6 +50,8 @@ public:
     // 计算
     // 改正库位线
     void retify(const common::Line2d& line1, const common::Line2d& line2);
+    common::Polygon2d getParallelArea(double offset);
+    common::Polygon2d getBorderParallelArea(const common::Line2d& line, double offset);
 private:
     ParkSpaceGroup* _group;
 };

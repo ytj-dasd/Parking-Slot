@@ -16,7 +16,7 @@ enum LineRelationType {
     TypeOverlap = 1,   // 重叠
     TypeExtension = 2  // 延长线关系
 };
-double epsilon = 0.01; // 1cm的限差
+double epsilon = 0.08; // 1cm的限差
 double iou_thresh = 0.2; // 若为重叠关系，则iou至少大于0.2
 // 判断两条直线的关系
 LineRelationType computeLineRelation(const common::Line2d& l1, const common::Line2d& l2) {
@@ -52,6 +52,16 @@ void ParkSpaceGroup::addParkSpace(const ParkSpace& parkspace) {
 bool ParkSpaceGroup::isIntersect(const ParkSpace& parkspace) const {
     for (const auto& ps : parkspaces) {
         if (parkspace.isIntersect(ps)) {return true;}
+    }
+    return false;
+}
+bool ParkSpaceGroup::isIntersectImage(const ParkSpace& parkspace, bool is_matched) const {
+    for (const auto& ps : parkspaces) {
+        if (is_matched) {
+            if (parkspace.isIntersectImage(ps, true)) {return true;}
+        } else {
+            if (parkspace.isIntersectImage(ps)) {return true;}
+        }
     }
     return false;
 }
@@ -349,6 +359,7 @@ void ParkSpaceGroup::edgeDetect(
             // std::cout << "pl linewidth: " << pl.line_width << std::endl;;
         }
     }
+
 }
 void ParkSpaceGroup::retifyParkSpace() {
     auto getLine = [this](int index) -> common::Line2d {
@@ -374,6 +385,18 @@ void ParkSpaceGroup::retifyParkSpace() {
         pl.computeCenterLine();
         
         // TODO: 后续修改改正方法
+        pl.border_line1.begin_point = pl.border_line1.getProjectPoint(pl.center_line.begin_point);
+        pl.border_line1.end_point = pl.border_line1.getProjectPoint(pl.center_line.end_point);
+        pl.border_line2.begin_point = pl.border_line2.getProjectPoint(pl.center_line.begin_point);
+        pl.border_line2.end_point = pl.border_line2.getProjectPoint(pl.center_line.end_point);
+        pl.retify(pl.border_line1, pl.border_line2);
+    }
+}
+
+void ParkSpaceGroup::CornerRetifyParkSpace() {
+    for (auto& pl : parklines) {
+        pl.computeCenterLine();
+        
         pl.border_line1.begin_point = pl.border_line1.getProjectPoint(pl.center_line.begin_point);
         pl.border_line1.end_point = pl.border_line1.getProjectPoint(pl.center_line.end_point);
         pl.border_line2.begin_point = pl.border_line2.getProjectPoint(pl.center_line.begin_point);

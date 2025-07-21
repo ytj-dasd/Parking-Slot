@@ -84,4 +84,26 @@ void ParkLine::retify(const common::Line2d& line1, const common::Line2d& line2) 
         border_line = border_line2;
     }
 }
+common::Polygon2d ParkLine::getParallelArea(double offset) {
+    auto line1 = center_line.getParallelLine(-offset);
+    auto line2 = center_line.getParallelLine(offset);
+    common::Polygon2d polygon;
+    polygon.addPoint(line1.begin_point);
+    polygon.addPoint(line1.end_point);
+    polygon.addPoint(line2.end_point);
+    polygon.addPoint(line2.begin_point);
+    return polygon;
+}
+
+common::Polygon2d ParkLine::getBorderParallelArea(const common::Line2d& line, double offset) {
+    auto line1 = line.getParallelLine(-offset);
+    auto line2 = line.getParallelLine(offset);
+    common::Polygon2d polygon;
+    polygon.addPoint(line1.begin_point);
+    polygon.addPoint(line1.end_point);
+    polygon.addPoint(line2.end_point);
+    polygon.addPoint(line2.begin_point);
+
+    return polygon;
+}
 }

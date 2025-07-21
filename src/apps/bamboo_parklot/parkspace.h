@@ -10,6 +10,7 @@ public:
     ParkSpace();
     virtual ~ParkSpace();
     bool isIntersect(const ParkSpace& other) const;
+    bool isIntersectImage(const ParkSpace& other, bool is_matched = false) const;
     const common::Point2d& getPoint(int index) const;
     common::Line2d getLine(int index) const;
     common::Point2d getLongSideDirection() const; // 长线方向
@@ -17,6 +18,8 @@ public:
     // 设计尺寸
     double design_width = 5.2;
     double design_height = 2.4;
+    
+    float score = 0.0; 
     // 优良等级
     void computeLineLevel(std::vector<int>& deltas, std::vector<int>& levels) const;
 };

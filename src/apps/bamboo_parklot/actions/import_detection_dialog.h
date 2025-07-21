@@ -1,5 +1,5 @@
-#ifndef WELKIN_BAMBOO_EXPORT_LAYER_AS_DXF_DIALOG_H
-#define WELKIN_BAMBOO_EXPORT_LAYER_AS_DXF_DIALOG_H
+#ifndef WELIN_BAMBOO_IMPORT_DETECTION_DIALOG_H
+#define WELIN_BAMBOO_IMPORT_DETECTION_DIALOG_H
 
 #include <QDialog>
 #include <common/geometry/pose3.h>
@@ -8,20 +8,23 @@ namespace welkin {
 namespace bamboo {
 
 namespace Ui {
-class ExportLayerAsDxfDialog;
+class ImportDetectionDialog;
 }
 
-class ExportLayerAsDxfDialog : public QDialog {
+class ImportDetectionDialog : public QDialog
+{
     Q_OBJECT
 
 public:
-    explicit ExportLayerAsDxfDialog(QWidget *parent = nullptr);
-    ~ExportLayerAsDxfDialog();
-    void setPath(const QString& path);
+    explicit ImportDetectionDialog(QWidget *parent = nullptr);
+    ~ImportDetectionDialog();
+
+    void setHistoryPath(const QString& history_path);
+    void setPaths(const QStringList& paths);
     void setLocalPose(const common::Pose3d& pose);
     void setGlobalPose(const common::Pose3d& pose);
 
-    QString getSavePath() const;
+    QStringList getLayerFilePaths() const;
     common::Pose3d getPose3d() const;
 private slots:
     void onNoneRatio(bool checked);
@@ -31,13 +34,17 @@ private slots:
 private:
     void setPoseReadOnly(bool readonly);
     void setPose(const common::Pose3d& pose);
+
 private:
-    Ui::ExportLayerAsDxfDialog *ui;
+    Ui::ImportDetectionDialog *ui;
     common::Pose3d _eye_pose;
     common::Pose3d _local_pose;
     common::Pose3d _global_pose;
+    QStringList _paths;
+    QString _history_path;
 };
 
+
 } // namespace bamboo
-} // namespace welkin
-#endif // WELKIN_BAMBOO_EXPORT_LAYER_AS_DXF_DIALOG_H
+} // namespace welin
+#endif // WELIN_BAMBOO_IMPORT_LAYERS_DIALOG_H

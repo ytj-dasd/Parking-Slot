@@ -31,6 +31,22 @@ bool MainWindow::initSurface() {
     auto optimate_action = proj_toolbar->addAction(
         QIcon(":/bamboo/images/optimate.png"), tr("Optimate"));
     connect(optimate_action, SIGNAL(triggered()), _main_viewer, SLOT(onOptimateSlot()));
+
+    auto optimate2_action = proj_toolbar->addAction(
+        QIcon(":/bamboo/images/optimate.png"), tr("Optimate2"));
+    connect(optimate2_action, SIGNAL(triggered()), _main_viewer, SLOT(onOptimateSlot2()));
+    
+    auto optimate3_action = proj_toolbar->addAction(
+        QIcon(":/bamboo/images/optimate.png"), tr("Optimate3"));
+    connect(optimate3_action, SIGNAL(triggered()), _main_viewer, SLOT(onOptimateSlot3()));
+
+    auto optimate4_action = proj_toolbar->addAction(
+        QIcon(":/bamboo/images/optimate.png"), tr("Optimate4"));
+    connect(optimate4_action, SIGNAL(triggered()), _main_viewer, SLOT(onOptimateSlot4()));
+
+    auto optimate4_2_action = proj_toolbar->addAction(
+        QIcon(":/bamboo/images/optimate.png"), tr("Optimate4_2"));
+    connect(optimate4_2_action, SIGNAL(triggered()), _main_viewer, SLOT(onOptimateSlot4_2()));
     return true;
 }
 }  // namespace welkin::uface

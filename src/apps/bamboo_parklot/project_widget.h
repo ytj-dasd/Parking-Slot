@@ -4,8 +4,11 @@
 
 namespace welkin::bamboo {
 class EpsdLayerManager;
+class AutoDetectionAction;
 class ImportLayersAction;
+class ImportDetectionAction;
 class ExportLayerAsDxfAction;
+class ExportCloudAction;
 class ProjectWidget : public BProjectWidget {
     Q_OBJECT
 public:
@@ -24,7 +27,10 @@ private:
     void initGlobalMenu();
 private:
     MainViewer* _main_viewer = nullptr;
+    AutoDetectionAction* _auto_detection_action = nullptr;
     ImportLayersAction* _import_layers_action = nullptr;
+    ImportDetectionAction* _import_detection_action = nullptr;
     ExportLayerAsDxfAction* _export_layer_action = nullptr;
+    ExportCloudAction* _export_cloud_action = nullptr;
 };
 }

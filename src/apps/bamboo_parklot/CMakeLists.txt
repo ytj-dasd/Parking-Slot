@@ -1,4 +1,8 @@
 file(GLOB_RECURSE SOURCE_FILE_LIST *.cpp) 
+set(ONNXRUNTIME_DIR "onnxruntime-linux-x64-gpu-1.16.1") 
+include_directories(${ONNXRUNTIME_DIR}/include)
+link_directories(${ONNXRUNTIME_DIR}/lib)
+
 add_executable(bamboo_parklot
     ${SOURCE_FILE_LIST}
 )
@@ -11,4 +15,5 @@ target_link_libraries(bamboo_parklot
     ${WELKIN_COMMON_LIB}
     ${WELKIN_UFACE_LIB}
     ${BAMBOO_LIB}
+    onnxruntime
 )

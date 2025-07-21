@@ -1,18 +1,18 @@
-#ifndef WELKIN_BAMBOO_IMPORTLAYERSACTION_H
-#define WELKIN_BAMBOO_IMPORTLAYERSACTION_H
+#ifndef WELKIN_BAMBOO_IMPORTDETECTIONACTION_H
+#define WELKIN_BAMBOO_IMPORTDETECTIONACTION_H
 #include <bamboo/widget/bproject_action.h>
 #include <common/geometry/pose3.h>
 
 namespace welkin {
 namespace bamboo {
 class MainViewer;
-class ImportLayersAction : public BProjectAction {
+class ImportDetectionAction : public BProjectAction {
     Q_OBJECT
 public:
-    explicit ImportLayersAction(BProjectWidget* project_widget = nullptr);
-    virtual ~ImportLayersAction();
+    explicit ImportDetectionAction(BProjectWidget* project_widget = nullptr);
+    virtual ~ImportDetectionAction();
     QString getID() override {
-        return QString("import_layers");
+        return QString("import_detection");
     }
     void setMainViewer(MainViewer* main_viewer);
 protected:

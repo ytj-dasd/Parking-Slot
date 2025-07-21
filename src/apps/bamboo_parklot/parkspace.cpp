@@ -8,9 +8,10 @@ ParkSpace::ParkSpace() : common::Polygon2d() {
     points.resize(4);
     // edge_types.resize(4, EdgeBorder);
 }
+
 ParkSpace::~ParkSpace() {}
 bool ParkSpace::isIntersect(const ParkSpace& other) const {
-    double padding = 0.02; // 2cm
+    double padding = 0.1; // 2cm
     common::Rectd brect = this->getBoundingRect();
     brect.addPadding(padding, padding);
 
@@ -20,6 +21,26 @@ bool ParkSpace::isIntersect(const ParkSpace& other) const {
     for (const auto& p1 : this->points) {
         for (const auto& p2 : other.points) {
             if (p1.distanceTo(p2) < padding) {return true;}
+        }
+    }
+    return false;
+}
+bool ParkSpace::isIntersectImage(const ParkSpace& other, bool is_matched) const {
+    double padding = 5; 
+    common::Rectd brect = this->getBoundingRect();
+    brect.addPadding(padding, padding);
+
+    common::Rectd br = other.getBoundingRect();
+    br.addPadding(padding, padding);
+    if (!brect.isIntersect(br)) {return false;}
+    for (const auto& p1 : this->points) {
+        for (const auto& p2 : other.points) {
+            if (is_matched) {
+                if (p1.distanceTo(p2) - 50 < padding) {return true;}
+            } else {
+                if (p1.distanceTo(p2) < padding) {return true;}
+            }
+            
         }
     }
     return false;

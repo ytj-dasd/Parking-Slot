@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>welkin::bamboo::ImportLayersDialog</class>
- <widget class="QDialog" name="welkin::bamboo::ImportLayersDialog">
+ <class>welkin::bamboo::ImportDetectionDialog</class>
+ <widget class="QDialog" name="welkin::bamboo::ImportDetectionDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Import Layers Dialog</string>
+   <string>Import Detection Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
@@ -286,7 +286,7 @@
      <item>
       <widget class="QLabel" name="label_7">
        <property name="text">
-        <string>Layer File Paths: </string>
+        <string>JSON File Paths: </string>
        </property>
       </widget>
      </item>
@@ -323,7 +323,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>welkin::bamboo::ImportLayersDialog</receiver>
+   <receiver>welkin::bamboo::ImportDetectionDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -339,7 +339,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>welkin::bamboo::ImportLayersDialog</receiver>
+   <receiver>welkin::bamboo::ImportDetectionDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

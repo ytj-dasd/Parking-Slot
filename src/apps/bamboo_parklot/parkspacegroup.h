@@ -10,6 +10,7 @@ public:
     ParkSpaceGroup();
     virtual ~ParkSpaceGroup();
     bool isIntersect(const ParkSpace& parkspace) const;
+    bool isIntersectImage(const ParkSpace& parkspace, bool is_matched = false) const;
     void addParkSpace(const ParkSpace& parkspace);
     common::Rectd getBoudingRect() const;
 
@@ -29,6 +30,8 @@ public:
         float thresh1 = 60, float thresh2 = 100);
     // 改正库位
     void retifyParkSpace();
+    // 角点改正库位
+    void CornerRetifyParkSpace();
     // 库位
     std::vector<ParkSpace> parkspaces;
     // 库位线
